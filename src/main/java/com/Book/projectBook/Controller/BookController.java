@@ -24,7 +24,7 @@ public class BookController {
 
     @RequestMapping(value="{bookId}")
         public ResponseEntity<Book> getBookById(@PathVariable("bookId") Long bookId) {
-        Optional<Book> optionalBook = bookRepository.findById( bookId);
+        Optional<Book> optionalBook = bookRepository.findById(bookId);
         if (optionalBook.isPresent()) {
             return ResponseEntity.ok(optionalBook.get());
         } else {
@@ -34,13 +34,13 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
-        Book newBook = BookRepository.save(book);
+        Book newBook = bookRepository.save(book);
         return ResponseEntity.ok(newBook);
     }
 
     @DeleteMapping(value="{bookId}")
     public ResponseEntity<Void> deleteBook(@PathVariable("bookId") Long bookId) {
-        BookRepository.deleteById(bookId);
+        bookRepository.deleteById(bookId);
         return ResponseEntity.ok(null);
     }
 

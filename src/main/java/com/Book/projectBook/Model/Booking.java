@@ -4,12 +4,14 @@ import java.util.Date;
 
 
 public class Booking {
-    private  int idBooking;
+    private Long idBooking;
     private Date startDate;
     private Date endDate;
 
+    public Booking() {
+    }
 
-    public Booking(int idBooking, Date startDate, Date endDate) {
+    public Booking(Long idBooking, Date startDate, Date endDate) {
         this.idBooking = idBooking;
         this.startDate = startDate;
         this.endDate = endDate;

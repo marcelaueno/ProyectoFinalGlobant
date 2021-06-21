@@ -10,28 +10,32 @@ public class Book {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)//genere ai
-    private int id;
+    private Long id;
     @Column(name="title",nullable = false, length = 30)
     private  String title;
     @Column(name="author",nullable = false, length = 30)
     private  String author;
     @Column(name="publishedDate")
     private Date publishedDate;
+
 //    private boolean condition;
 
+    public Book() {
+    }
 
-    public Book(int id, String title, String author, Date publishedDate) {
+    public Book(Long id, String title, String author, Date publishedDate) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.publishedDate = publishedDate;
     }
 
-    public int getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

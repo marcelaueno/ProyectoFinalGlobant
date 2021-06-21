@@ -4,16 +4,29 @@ import org.springframework.lang.NonNull;
 
 public class User {
 
+    private Long idUser;
     private String name;
     private String lastname;
     private String email;
     private int documentNumber;
 
-    public User(String name, String lastname, String email, int documentNumber) {
+    public User() {
+    }
+
+    public User(Long idUser, String name, String lastname, String email, int documentNumber) {
+        this.idUser = idUser;
         this.name = name;
         this.lastname = lastname;
         this.email = email;
         this.documentNumber = documentNumber;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
     public String getName() {
@@ -47,4 +60,5 @@ public class User {
     public void setDocumentNumber(int documentNumber) {
         this.documentNumber = documentNumber;
     }
+
 }
