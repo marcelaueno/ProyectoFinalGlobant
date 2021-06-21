@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("books")
-public class BookController {
+@RequestMapping("users")
+public class UserController {
 
     @Autowired
     private BookRepository bookRepository;
@@ -23,7 +23,7 @@ public class BookController {
     }
 
     @RequestMapping(value="{bookId}")
-        public ResponseEntity<Book> getBookById(@PathVariable("bookId") Long bookId) {
+    public ResponseEntity<Book> getBookById(@PathVariable("bookId") Long bookId) {
         Optional<Book> optionalBook = bookRepository.findById( bookId);
         if (optionalBook.isPresent()) {
             return ResponseEntity.ok(optionalBook.get());
@@ -58,4 +58,5 @@ public class BookController {
             return ResponseEntity.notFound().build();
         }
     }
+
 }
