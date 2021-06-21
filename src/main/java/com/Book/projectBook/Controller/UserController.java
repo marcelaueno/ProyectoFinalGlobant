@@ -31,8 +31,8 @@ public class UserController {
         return ResponseEntity.ok(newUser);
     }
 
-    @DeleteMapping(value="{documentNumber}")
-    public ResponseEntity<Void> deleteUser(@PathVariable("documentNumber") Long idUser) {
+    @DeleteMapping(value="{idUser}")
+    public ResponseEntity<Void> deleteUser(@PathVariable("idUser") Long idUser) {
         userRepository.deleteById(idUser);
         return ResponseEntity.ok(null);
     }
