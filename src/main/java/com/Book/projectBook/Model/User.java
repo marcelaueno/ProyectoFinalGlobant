@@ -2,16 +2,24 @@ package com.Book.projectBook.Model;
 
 import org.springframework.lang.NonNull;
 
-import javax.persistence.Column;
+import javax.persistence.*;
+import org.springframework.data.annotation.Id;
 
+@Entity
+@Table(name="user")
 public class User {
 
+    @Id
+    @Column(name="idUser")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)//genere ai
     private Long idUser;
+    @Column(name="name",nullable = false, length = 45)
     private String name;
+    @Column(name="lastname",nullable = false, length = 45)
     private String lastname;
-    @Column(name="email", nullable = false, length = 50,unique = true)
+    @Column(name="email", nullable = false, length = 45,unique = true)
     private String email;
-    @Column(name="documentNumber", nullable = false, length = 20,unique = true)
+    @Column(name="documentNumber", nullable = false, length = 45)
     private int documentNumber;
 
     public User() {

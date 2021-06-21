@@ -1,7 +1,9 @@
 package com.Book.projectBook.Model;
 
+
 import javax.persistence.*;
 import java.util.Date;
+import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name="book")
@@ -15,16 +17,17 @@ public class Book {
     private  String title;
     @Column(name="author",nullable = false, length = 45)
     private  String author;
-    @Column(name="publishedDate")
+    @Column(name="publishedDate",nullable = false)
     private Date publishedDate;
+    @Column(name="condition",nullable = false)
     private boolean condition;
-    private Booking booking;
+   // private Booking booking;
 
 
     public Book() {
     }
 
-    public Book(Long id, String title, String author, Date publishedDate, boolean enabled) {
+    public Book(Long id, String title, String author, Date publishedDate, boolean condition) {
         this.id = id;
         this.title = title;
         this.author = author;
