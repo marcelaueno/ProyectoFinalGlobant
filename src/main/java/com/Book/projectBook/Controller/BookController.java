@@ -1,7 +1,7 @@
 package com.Book.projectBook.Controller;
 
 import com.Book.projectBook.Model.Book;
-import com.Book.projectBook.Service.BookRepository;
+import com.Book.projectBook.Repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

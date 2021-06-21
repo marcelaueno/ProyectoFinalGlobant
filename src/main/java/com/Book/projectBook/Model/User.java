@@ -2,12 +2,16 @@ package com.Book.projectBook.Model;
 
 import org.springframework.lang.NonNull;
 
+import javax.persistence.Column;
+
 public class User {
 
     private Long idUser;
     private String name;
     private String lastname;
+    @Column(name="email", nullable = false, length = 50,unique = true)
     private String email;
+    @Column(name="documentNumber", nullable = false, length = 20,unique = true)
     private int documentNumber;
 
     public User() {

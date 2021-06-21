@@ -11,23 +11,25 @@ public class Book {
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)//genere ai
     private Long id;
-    @Column(name="title",nullable = false, length = 30)
+    @Column(name="title",nullable = false, length = 45)
     private  String title;
-    @Column(name="author",nullable = false, length = 30)
+    @Column(name="author",nullable = false, length = 45)
     private  String author;
     @Column(name="publishedDate")
     private Date publishedDate;
+    private boolean condition;
+    private Booking booking;
 
-//    private boolean condition;
 
     public Book() {
     }
 
-    public Book(Long id, String title, String author, Date publishedDate) {
+    public Book(Long id, String title, String author, Date publishedDate, boolean enabled) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.publishedDate = publishedDate;
+        this.condition = condition;
     }
 
 
@@ -62,7 +64,7 @@ public class Book {
     public void setPublishedDate(Date publishedDate) {
         this.publishedDate = publishedDate;
     }
-/*
+
     public boolean isCondition() {
         return condition;
     }
@@ -70,5 +72,4 @@ public class Book {
     public void setCondition(boolean condition) {
         this.condition = condition;
     }
-*/
 }
