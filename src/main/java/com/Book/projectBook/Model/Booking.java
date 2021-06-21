@@ -8,6 +8,7 @@ public class Booking {
     private Date startDate;
     private Date endDate;
 
+
     public Booking(int idBooking, Date startDate, Date endDate) {
         this.idBooking = idBooking;
         this.startDate = startDate;
