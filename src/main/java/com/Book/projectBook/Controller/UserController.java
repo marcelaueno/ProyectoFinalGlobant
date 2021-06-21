@@ -1,7 +1,9 @@
 package com.Book.projectBook.Controller;
 
 import com.Book.projectBook.Model.Book;
+import com.Book.projectBook.Model.User;
 import com.Book.projectBook.Service.BookRepository;
+import com.Book.projectBook.Service.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,50 +12,45 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
-    private BookRepository bookRepository;
+    private UserRepository userRepository;
 
-    @GetMapping
-    public ResponseEntity<List<Book>> getBook() {
-        List<Book> book = bookRepository.findAll();
-        return ResponseEntity.ok(book);
-    }
-
-    @RequestMapping(value="{bookId}")
-    public ResponseEntity<Book> getBookById(@PathVariable("bookId") Long bookId) {
-        Optional<Book> optionalBook = bookRepository.findById( bookId);
-        if (optionalBook.isPresent()) {
-            return ResponseEntity.ok(optionalBook.get());
+    @RequestMapping(value="{documentNumber}")
+    public ResponseEntity<User> getUserById(@PathVariable("documentNumber") int documentNumber) {
+        Optional<User> optionalUser = userRepository.findById(documentNumber);
+        if (optionalUser.isPresent()) {
+            return ResponseEntity.ok(optionalUser.get());
         } else {
             return ResponseEntity.noContent().build();
         }
     }
 
     @PostMapping
-    public ResponseEntity<Book> createBook(@RequestBody Book book) {
-        Book newBook = BookRepository.save(book);
-        return ResponseEntity.ok(newBook);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User newUser = UserRepository.save(user);
+        return ResponseEntity.ok(newUser);
     }
 
-    @DeleteMapping(value="{bookId}")
-    public ResponseEntity<Void> deleteBook(@PathVariable("bookId") Long bookId) {
-        BookRepository.deleteById(bookId);
+    @DeleteMapping(value="{documentNumber}")
+    public ResponseEntity<Void> deleteUser(@PathVariable("documentNumber") int documentNumber) {
+        UserRepository.deleteById(documentNumber);
         return ResponseEntity.ok(null);
     }
 
     @PutMapping
-    public ResponseEntity<Book> updateBook(@RequestBody Book book) {
-        Optional<Book> optionalBook = bookRepository.findById(book.getId());
-        if (optionalBook.isPresent()) {
-            Book updateBook = optionalBook.get();
-            updateBook.setTitle(book.getTitle());
-            updateBook.setAuthor(book.getAuthor());
-            updateBook.setPublishedDate(book.getPublishedDate());
-            bookRepository.save(updateBook);
-            return ResponseEntity.ok(updateBook);
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        Optional<User> optionalUser = userRepository.findById(user.getId());
+        if (optionalUser.isPresent()) {
+            User updateUser = optionalUser.get();
+            updateUser.setName(user.getName());
+            updateUser.setLastname(user.getLastname());
+            updateUser.setDocumentNumber(user.getDocumentNumber());
+            updateUser.setEmail(user.getEmail());
+            userRepository.save(updateUser);
+            return ResponseEntity.ok(updateUser);
         } else {
             return ResponseEntity.notFound().build();
         }

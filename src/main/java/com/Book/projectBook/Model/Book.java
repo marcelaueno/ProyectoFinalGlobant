@@ -19,6 +19,14 @@ public class Book {
     private Date publishedDate;
 //    private boolean condition;
 
+
+    public Book(int id, String title, String author, Date publishedDate) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.publishedDate = publishedDate;
+    }
+
     public int getId() {
         return id;
     }

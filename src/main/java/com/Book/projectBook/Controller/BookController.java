@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("books")
+@RequestMapping("book")
 public class BookController {
 
     @Autowired
-    private BookRepository bookRepository;
+    public BookRepository bookRepository;
 
     @GetMapping
     public ResponseEntity<List<Book>> getBook() {
