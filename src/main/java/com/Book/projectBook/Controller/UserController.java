@@ -1,56 +1,51 @@
 package com.Book.projectBook.Controller;
 
+import com.Book.projectBook.Model.Book;
 import com.Book.projectBook.Model.User;
-import com.Book.projectBook.Repository.UserRepository;
+import com.Book.projectBook.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("user")
 public class UserController {
 
-    @Autowired
-    private UserRepository userRepository;
 
-    @RequestMapping(value="{idUser}")
-    public ResponseEntity<User> getUserById(@PathVariable("idUser") Long idUser) {
-        Optional<User> optionalUser = userRepository.findById(idUser);
-        if (optionalUser.isPresent()) {
-            return ResponseEntity.ok(optionalUser.get());
-        } else {
-            return ResponseEntity.noContent().build();
-        }
+
+    @Autowired
+    private UserService userService;
+
+
+
+    @GetMapping
+    public List<User> listUser() {
+
+        return userService.listUser();
     }
+
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User newUser = userRepository.save(user);
-        return ResponseEntity.ok(newUser);
+    public User createUser(@RequestBody User user) {
+
+        return userService.createUser(user);
     }
 
-    @DeleteMapping(value="{documentNumber}")
-    public ResponseEntity<Void> deleteUser(@PathVariable("documentNumber") Long idUser) {
-        userRepository.deleteById(idUser);
-        return ResponseEntity.ok(null);
+    @RequestMapping(value="{userId}")
+    public Optional<User> getUserById(@PathVariable("userId") User user) {
+        return userService.getUserById(user);
+
+    }
+
+    @DeleteMapping(value="{userId}")
+    public String deleteUserById(@PathVariable("userId") Long idUser) {
+        return userService.deleteUserById(idUser);
     }
 
     @PutMapping
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
-        Optional<User> optionalUser = userRepository.findById(user.getIdUser());
-        if (optionalUser.isPresent()) {
-            User updateUser = optionalUser.get();
-            updateUser.setName(user.getName());
-            updateUser.setLastname(user.getLastname());
-            updateUser.setDocumentNumber(user.getDocumentNumber());
-            updateUser.setEmail(user.getEmail());
-            userRepository.save(updateUser);
-            return ResponseEntity.ok(updateUser);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public User updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
     }
-
 }

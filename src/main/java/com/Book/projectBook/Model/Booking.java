@@ -1,13 +1,26 @@
 package com.Book.projectBook.Model;
 
+import org.springframework.lang.NonNull;
+
+import javax.persistence.*;
 import java.util.Date;
 
-
+@Entity
+@Table(name = "BOOKING")
 public class Booking {
-    private Long idBooking;
+
+    @Id
+    @Column(name="idBooking")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private  Long idBooking;
+    @Column
+    @NonNull
     private Date startDate;
+    @Column
+    @NonNull
     private Date endDate;
-    private User user;
+    @ManyToOne(cascade = CascadeType.ALL)
+     private User user;
 
     public Booking() {
     }
@@ -28,6 +41,14 @@ public class Booking {
 
     public Date getEndDate() {
         return endDate;
+    }
+
+    public Long getIdBooking() {
+        return idBooking;
+    }
+
+    public void setIdBooking(Long idBooking) {
+        this.idBooking = idBooking;
     }
 
     public void setEndDate(Date endDate) {

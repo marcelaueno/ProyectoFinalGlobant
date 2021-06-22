@@ -2,16 +2,23 @@ package com.Book.projectBook.Model;
 
 import org.springframework.lang.NonNull;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "USER")
 public class User {
 
+    @Id
+    @Column(name="idUser")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long idUser;
+    @Column(name="name",nullable = false, length = 45)
     private String name;
+    @Column(name="lastname",nullable = false, length = 45)
     private String lastname;
     @Column(name="email", nullable = false, length = 50,unique = true)
     private String email;
-    @Column(name="documentNumber", nullable = false, length = 20,unique = true)
+    @Column(name="documentNumber",nullable = false)
     private int documentNumber;
 
     public User() {
@@ -29,7 +36,7 @@ public class User {
         return idUser;
     }
 
-    public void setIdUser(Long idUser) {
+    public void setIdUser(Long idUSer) {
         this.idUser = idUser;
     }
 

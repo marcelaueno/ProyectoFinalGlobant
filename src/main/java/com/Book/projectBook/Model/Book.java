@@ -1,37 +1,47 @@
 package com.Book.projectBook.Model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-@Table(name="book")
+@Table(name="BOOK")
 public class Book {
 
     @Id
-    @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)//genere ai
+    @Column(name="idBook")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     @Column(name="title",nullable = false, length = 45)
     private  String title;
     @Column(name="author",nullable = false, length = 45)
     private  String author;
-    @Column(name="publishedDate")
+    @Column
+    @NotNull
     private Date publishedDate;
-    private boolean condition;
-    private Booking booking;
+    @Column(name="available")
+    @NotNull
+    private String available;
+    @Column(name="unavailable")
+    @NotNull
+    private String unavailable;
+
+    @OneToOne(cascade = CascadeType.ALL)
+     private Booking booking;
 
 
     public Book() {
     }
 
-    public Book(Long id, String title, String author, Date publishedDate, boolean enabled) {
+    public Book(Long id, String title, String author, Date publishedDate, String available, String unavailable, Booking booking) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.publishedDate = publishedDate;
-        this.condition = condition;
+        this.available = available;
+        this.unavailable = unavailable;
+        this.booking = booking;
     }
-
 
     public Long getId() {
         return id;
@@ -65,11 +75,19 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
-    public boolean isCondition() {
-        return condition;
+    public String getAvailable() {
+        return available;
     }
 
-    public void setCondition(boolean condition) {
-        this.condition = condition;
+    public void setAvailable(String available) {
+        this.available = available;
+    }
+
+    public String getUnavailable() {
+        return unavailable;
+    }
+
+    public void setUnavailable(String unavailable) {
+        this.unavailable = unavailable;
     }
 }
