@@ -5,8 +5,6 @@ import com.Book.projectBook.Model.Book;
 import com.Book.projectBook.Repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

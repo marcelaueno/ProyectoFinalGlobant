@@ -4,6 +4,7 @@ import com.Book.projectBook.Model.Book;
 
 import com.Book.projectBook.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +28,9 @@ public class BookController {
 
 
     @PostMapping
-    public Book createBook(@RequestBody Book book) {
+    public ResponseEntity<Book> createBook(@RequestBody Book book) {
         bookService.createBook(book);
-        return  null;
+        return  new ResponseEntity<Book>(HttpStatus.CREATED);
     }
 
     @RequestMapping(value="{bookId}")

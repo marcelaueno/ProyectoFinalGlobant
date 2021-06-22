@@ -1,4 +1,10 @@
 package com.Book.projectBook.Exception;
 
-public class ExceptionBookExists {
+public class ExceptionBookExists extends Exception{
+
+
+
+
+
+
 }

@@ -1,5 +1,6 @@
 package com.Book.projectBook.Model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -26,6 +27,7 @@ public class Book {
 
     @Column
     @NonNull
+    @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date publishedDate;
 
     @Column(name="available")
@@ -66,7 +68,7 @@ public class Book {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = (title != null) ? title.toUpperCase() : null;
     }
 
     public String getAuthor() {
@@ -74,7 +76,7 @@ public class Book {
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+        this.author =  this.author = (author != null) ? author.toUpperCase() : null;
     }
 
     public Date getPublishedDate() {
@@ -90,7 +92,7 @@ public class Book {
     }
 
     public void setAvailable(String available) {
-        this.available = available;
+        this.available =  (available != null) ? available.toUpperCase() : null;;
     }
 
     public String getUnavailable() {
@@ -98,6 +100,7 @@ public class Book {
     }
 
     public void setUnavailable(String unavailable) {
-        this.unavailable = unavailable;
+        this.unavailable =  (available != null) ? available.toUpperCase() : null;
+
     }
 }

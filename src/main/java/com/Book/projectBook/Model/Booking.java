@@ -1,5 +1,6 @@
 package com.Book.projectBook.Model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -15,9 +16,11 @@ public class Booking {
     private  Long idBooking;
     @Column
     @NonNull
+    @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date startDate;
     @Column
     @NonNull
+    @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date endDate;
     @ManyToOne(cascade = CascadeType.ALL)
      private User user;
