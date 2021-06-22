@@ -5,6 +5,8 @@ import com.Book.projectBook.Model.Book;
 import com.Book.projectBook.Repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,10 +20,6 @@ public class BookService implements BookServiceInterface {
 
     @Autowired
     private BookRepository bookRepository;
-
-
-
-
 
 
     @Override
@@ -54,14 +52,18 @@ public class BookService implements BookServiceInterface {
     @Override
     @Transactional(readOnly = true)
     public List<Book> listBook() {
-        return (List<Book>) bookRepository.findAll();
-    }
+
+        return (List<Book>) bookRepository.findAll();    }
+
+
+
 
     @Transactional(readOnly = true)
     @Override
     public List<Book> listByAvailable(String available) {
+        return null;
 
-            return null;
+
     }
     @Transactional(readOnly = true)
     @Override

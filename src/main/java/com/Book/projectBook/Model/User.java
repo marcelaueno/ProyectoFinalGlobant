@@ -3,6 +3,8 @@ package com.Book.projectBook.Model;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "USER")
@@ -12,11 +14,14 @@ public class User {
     @Column(name="idUser")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long idUser;
-    @Column(name="name",nullable = false, length = 45)
+    @Column(name="name", length = 45)
+    @NotEmpty
     private String name;
-    @Column(name="lastname",nullable = false, length = 45)
+    @Column(name="lastname", length = 45)
+    @NotEmpty
     private String lastname;
-    @Column(name="email", nullable = false, length = 50,unique = true)
+    @Column(name="email", length = 50,unique = true)
+    @NotEmpty @Email
     private String email;
     @Column(name="documentNumber",nullable = false)
     private int documentNumber;

@@ -9,7 +9,6 @@ import java.util.Optional;
 public interface BookingServiceInterface {
 
 
-
     public Booking createBooking(Booking booking);
 
     public Booking updateBooking(Booking booking);
@@ -18,5 +17,5 @@ public interface BookingServiceInterface {
 
     public List<Booking> listBooking();
 
-     public Optional<Booking> getBookingById(Booking booking);
+    public Optional<Booking> getBookingById(Booking booking);
 }

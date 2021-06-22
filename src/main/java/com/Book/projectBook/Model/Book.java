@@ -1,6 +1,9 @@
 package com.Book.projectBook.Model;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -12,18 +15,25 @@ public class Book {
     @Column(name="idBook")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @Column(name="title",nullable = false, length = 45)
+
+    @Column(name="title", length = 45)
+    @NotEmpty
     private  String title;
-    @Column(name="author",nullable = false, length = 45)
+
+    @Column(name="author", length = 45)
+    @NotEmpty
     private  String author;
+
     @Column
-    @NotNull
+    @NonNull
     private Date publishedDate;
+
     @Column(name="available")
-    @NotNull
+    @NotEmpty
     private String available;
+
     @Column(name="unavailable")
-    @NotNull
+    @NotEmpty
     private String unavailable;
 
     @OneToOne(cascade = CascadeType.ALL)
