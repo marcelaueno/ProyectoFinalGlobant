@@ -3,7 +3,7 @@ package com.Book.projectBook.Model;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
-import org.springframework.data.annotation.Id;
+
 
 @Entity
 @Table(name="user")

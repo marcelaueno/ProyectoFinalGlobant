@@ -2,7 +2,7 @@ package com.Book.projectBook.Model;
 
 import javax.persistence.*;
 import java.util.Date;
-import org.springframework.data.annotation.Id;
+
 
 @Entity
 @Table(name="booking")
@@ -15,7 +15,16 @@ public class Booking {
 
     private Date startDate;
     private Date endDate;
+    @ManyToOne
     private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Booking() {
     }

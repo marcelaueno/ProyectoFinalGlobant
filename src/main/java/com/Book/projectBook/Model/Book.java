@@ -2,8 +2,9 @@ package com.Book.projectBook.Model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
-import org.springframework.data.annotation.Id;
+
 
 @Entity
 @Table(name="book")
@@ -17,22 +18,29 @@ public class Book {
     private  String title;
     @Column(name="author",nullable = false, length = 45)
     private  String author;
-    @Column(name="publishedDate",nullable = false)
+    @Column
+    @NotNull
     private Date publishedDate;
-    @Column(name="condition",nullable = false)
-    private boolean condition;
-   // private Booking booking;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Booking booking;
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
 
     public Book() {
     }
 
-    public Book(Long id, String title, String author, Date publishedDate, boolean condition) {
+    public Book(Long id, String title, String author, Date publishedDate) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.publishedDate = publishedDate;
-        this.condition = condition;
     }
 
 
@@ -68,11 +76,4 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
-    public boolean isCondition() {
-        return condition;
-    }
-
-    public void setCondition(boolean condition) {
-        this.condition = condition;
-    }
 }
