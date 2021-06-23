@@ -1,16 +1,21 @@
 package com.Book.projectBook.Service;
 
+import com.Book.projectBook.Exception.ExceptionBookExists;
 import com.Book.projectBook.Model.Book;
 
 import com.Book.projectBook.Repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService implements BookServiceInterface {
@@ -22,8 +27,7 @@ public class BookService implements BookServiceInterface {
 
     @Override
     public Book createBook(Book book) {
-        return   bookRepository.save(book);
-
+          return bookRepository.save(book);
 
     }
 
@@ -50,23 +54,16 @@ public class BookService implements BookServiceInterface {
     @Override
     @Transactional(readOnly = true)
     public List<Book> listBook() {
-
-        return (List<Book>) bookRepository.findAll();    }
+       return (List<Book>) bookRepository.findAll();    }
 
 
 
 
     @Transactional(readOnly = true)
-    @Override
-    public List<Book> listByAvailable(String available) {
-        return null;
+    public List<Book> listByCondition(Book book) {
+       return null;
 
 
-    }
-    @Transactional(readOnly = true)
-    @Override
-    public List<Book> listByUnavailable(String unavailable) {
-        return null;
     }
 
 

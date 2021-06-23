@@ -17,29 +17,29 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    @GetMapping
+    @GetMapping("/listBooking")
     public List<Booking> listBooking() {
         return bookingService.listBooking();
     }
 
-    @PostMapping
+    @PostMapping("/createBooking")
     public Booking createBooking(@RequestBody Booking booking) {
         return bookingService.createBooking(booking);
     }
 
-    @RequestMapping(value="{bookingId}")
+    @RequestMapping("/getBookingById/{bookingId}")
     public Optional<Booking> getBookingById(@PathVariable("bookingId") Booking booking) {
         return bookingService.getBookingById(booking);
 
     }
 
-    @DeleteMapping(value="{bookingId}")
+    @DeleteMapping("/deleteBookingById/{bookingId}")
     public String deleteBookingById(@PathVariable("bookingId") Long idBooking) {
         return bookingService.deleteByIdBooking(idBooking);
     }
 
-    @PutMapping
-    public Booking updateBook(@RequestBody Booking booking) {
+    @PutMapping("/updateBooking")
+    public Booking updateBooking(@RequestBody Booking booking) {
         return bookingService.updateBooking(booking);
     }
 

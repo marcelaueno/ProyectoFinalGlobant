@@ -21,30 +21,29 @@ public class BookController {
 
 
 
-    @GetMapping
+    @GetMapping ("/listBook")
     public List<Book> listBook() {
         return bookService.listBook();
     }
 
-
-    @PostMapping
+    @PostMapping("/createBook")
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         bookService.createBook(book);
         return  new ResponseEntity<Book>(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value="{bookId}")
+    @RequestMapping("/getBookById/{bookId}")
     public Optional<Book> getBookById(@PathVariable("bookId") Book book) {
         return bookService.getBookById(book);
 
     }
 
-    @DeleteMapping(value="{bookId}")
+    @DeleteMapping("/getBookById/{bookId}")
     public String deleteBookById(@PathVariable("bookId") Long id) {
         return bookService.deleteById(id);
     }
 
-    @PutMapping
+    @PutMapping("/updateBook")
     public Book updateBook(@RequestBody Book book) {
         return bookService.updateBook(book);
     }

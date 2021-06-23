@@ -19,11 +19,10 @@ public interface BookServiceInterface {
 
     public List<Book> listBook();
 
-    @Query(value = "SELECT * FROM BOOK WHERE AVAILABLE = ?1", nativeQuery = true)
-    public List<Book> listByAvailable(String available);
 
-    @Query(value = "SELECT * FROM BOOK WHERE UNAVAILABLE = ?1", nativeQuery = true)
-    public List<Book> listByUnavailable(String unavailable);
+    public List<Book> listByCondition(Book book);
+
+
 
     public Optional<Book> getBookById(Book book);
 

@@ -30,29 +30,21 @@ public class Book {
     @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date publishedDate;
 
-    @Column(name="available")
+    @Column(name="reserved")
     @NotEmpty
-    private String available;
+    private String reserved;
 
-    @Column(name="unavailable")
-    @NotEmpty
-    private String unavailable;
-
-    @OneToOne(cascade = CascadeType.ALL)
-     private Booking booking;
 
 
     public Book() {
     }
 
-    public Book(Long id, String title, String author, Date publishedDate, String available, String unavailable, Booking booking) {
+    public Book(Long id, String title, String author, @NonNull Date publishedDate, String reserved) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.publishedDate = publishedDate;
-        this.available = available;
-        this.unavailable = unavailable;
-        this.booking = booking;
+        this.reserved = reserved;
     }
 
     public Long getId() {
@@ -87,20 +79,11 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
-    public String getAvailable() {
-        return available;
+    public String getReserved() {
+        return reserved;
     }
 
-    public void setAvailable(String available) {
-        this.available =  (available != null) ? available.toUpperCase() : null;;
-    }
-
-    public String getUnavailable() {
-        return unavailable;
-    }
-
-    public void setUnavailable(String unavailable) {
-        this.unavailable =  (available != null) ? available.toUpperCase() : null;
-
+    public void setReserved(String reserved) {
+        this.reserved = reserved;
     }
 }

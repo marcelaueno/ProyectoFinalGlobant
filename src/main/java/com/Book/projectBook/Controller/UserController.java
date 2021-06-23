@@ -20,31 +20,31 @@ public class UserController {
 
 
 
-    @GetMapping
+    @GetMapping("/listUser")
     public List<User> listUser() {
 
         return userService.listUser();
     }
 
 
-    @PostMapping
+    @PostMapping("/createUser")
     public User createUser(@RequestBody User user) {
 
         return userService.createUser(user);
     }
 
-    @RequestMapping(value="{userId}")
+    @RequestMapping("/getUserById{userId}")
     public Optional<User> getUserById(@PathVariable("userId") User user) {
         return userService.getUserById(user);
 
     }
 
-    @DeleteMapping(value="{userId}")
+    @DeleteMapping("/deleteUserById{userId}")
     public String deleteUserById(@PathVariable("userId") Long idUser) {
         return userService.deleteUserById(idUser);
     }
 
-    @PutMapping
+    @PutMapping("/updateUser")
     public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
