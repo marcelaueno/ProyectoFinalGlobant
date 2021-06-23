@@ -26,7 +26,6 @@ public class Book {
     @NotEmpty
     private  String author;
 
-
     @Column
     @NonNull
     @DateTimeFormat(pattern="MM/dd/yyyy")
@@ -38,33 +37,16 @@ public class Book {
 
 
 
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
-
     public Book() {
     }
 
-<<<<<<< HEAD
     public Book(Long id, String title, String author, @NonNull Date publishedDate, String reserved) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.publishedDate = publishedDate;
         this.reserved = reserved;
-=======
 
-    public Book(Long id, String title, String author, Date publishedDate, String available, String unavailable, Booking booking) {
-
-      this.available = available;
-        this.unavailable = unavailable;
-        this.booking = booking;
-
->>>>>>> d30745d7c98e949c2bb44c64de86c40a2f86db1a
     }
 
     public Long getId() {
@@ -99,22 +81,15 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
-<<<<<<< HEAD
+
     public String getReserved() {
         return reserved;
-=======
 
-    public String getAvailable() {
-        return available;
     }
-
-    public void setAvailable(String available) {
-        this.available =  (available != null) ? available.toUpperCase() : null;;
->>>>>>> d30745d7c98e949c2bb44c64de86c40a2f86db1a
-    }
-
     public void setReserved(String reserved) {
         this.reserved = reserved;
     }
+
+
 
 }

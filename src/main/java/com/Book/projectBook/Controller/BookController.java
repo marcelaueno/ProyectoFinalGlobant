@@ -26,12 +26,7 @@ public class BookController {
         return bookService.listBook();
     }
 
-<<<<<<< HEAD
     @PostMapping("/createBook")
-=======
-
-  @PostMapping
->>>>>>> d30745d7c98e949c2bb44c64de86c40a2f86db1a
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         bookService.createBook(book);
         return  new ResponseEntity<Book>(HttpStatus.CREATED);
@@ -43,15 +38,9 @@ public class BookController {
 
     }
 
-<<<<<<< HEAD
     @DeleteMapping("/getBookById/{bookId}")
-=======
-
-    @DeleteMapping(value="{bookId}")
->>>>>>> d30745d7c98e949c2bb44c64de86c40a2f86db1a
     public String deleteBookById(@PathVariable("bookId") Long id) {
         return bookService.deleteById(id);
-
     }
 
     @PutMapping("/updateBook")

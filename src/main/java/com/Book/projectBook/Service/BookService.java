@@ -54,7 +54,7 @@ public class BookService implements BookServiceInterface {
     @Override
     @Transactional(readOnly = true)
     public List<Book> listBook() {
-       return (List<Book>) bookRepository.findAll();    }
+       return (List<Book>) bookRepository.findByOrderByTitleAsc();    }
 
 
 
