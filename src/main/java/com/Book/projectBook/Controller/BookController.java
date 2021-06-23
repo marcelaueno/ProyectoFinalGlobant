@@ -27,7 +27,7 @@ public class BookController {
     }
 
 
-    @PostMapping
+  @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         bookService.createBook(book);
         return  new ResponseEntity<Book>(HttpStatus.CREATED);
@@ -39,9 +39,11 @@ public class BookController {
 
     }
 
+
     @DeleteMapping(value="{bookId}")
     public String deleteBookById(@PathVariable("bookId") Long id) {
         return bookService.deleteById(id);
+
     }
 
     @PutMapping

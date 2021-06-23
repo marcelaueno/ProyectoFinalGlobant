@@ -1,12 +1,13 @@
 package com.Book.projectBook.Model;
 
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+
 
 @Entity
 @Table(name="BOOK")
@@ -25,6 +26,7 @@ public class Book {
     @NotEmpty
     private  String author;
 
+
     @Column
     @NonNull
     @DateTimeFormat(pattern="MM/dd/yyyy")
@@ -42,17 +44,24 @@ public class Book {
      private Booking booking;
 
 
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
     public Book() {
     }
 
+
     public Book(Long id, String title, String author, Date publishedDate, String available, String unavailable, Booking booking) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.publishedDate = publishedDate;
-        this.available = available;
+
+      this.available = available;
         this.unavailable = unavailable;
         this.booking = booking;
+
     }
 
     public Long getId() {
@@ -87,6 +96,7 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
+
     public String getAvailable() {
         return available;
     }
@@ -103,4 +113,5 @@ public class Book {
         this.unavailable =  (available != null) ? available.toUpperCase() : null;
 
     }
+
 }
