@@ -1,13 +1,14 @@
 package com.Book.projectBook.Model;
 
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
-
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Entity
-@Table(name = "BOOKING")
+@Table(name="booking")
 public class Booking {
 
     @Id
@@ -22,10 +23,20 @@ public class Booking {
     @NonNull
     @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date endDate;
+
     @ManyToOne(cascade = CascadeType.ALL)
      private User user;
     @OneToOne(cascade = CascadeType.ALL)
     private Book book;
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Booking() {
     }
