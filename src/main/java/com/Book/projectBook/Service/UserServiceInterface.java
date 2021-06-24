@@ -8,13 +8,13 @@ import java.util.Optional;
 
 public interface UserServiceInterface {
 
-    public User createUser(User user);
+     User createUser(User user);
 
-    public User updateUser(User user);
+     User updateUser(User user);
 
-    public String deleteUserById(Long idUser);
+     String deleteUserById(Long idUser);
 
-    public List<User> listUser();
+     List<User> listUser();
 
-    public Optional<User> getUserById(User user);
+     Optional<User> getUserById(User user);
 }

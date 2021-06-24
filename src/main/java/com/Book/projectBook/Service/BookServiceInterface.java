@@ -1,5 +1,6 @@
 package com.Book.projectBook.Service;
 
+import com.Book.projectBook.Exception.ExceptionBookExists;
 import com.Book.projectBook.Model.Book;
 import com.Book.projectBook.Model.Booking;
 import org.springframework.data.jpa.repository.Query;
@@ -10,21 +11,17 @@ import java.util.Optional;
 public interface BookServiceInterface {
 
 
-    public Book createBook(Book book);
+     Book createBook(Book book) throws ExceptionBookExists;
 
-    public Book updateBook(Book book);
+     Book updateBook(Book book);
 
+     String deleteById(Long id);
 
-    public String deleteById(Long id);
+      List<Book> listBook();
 
-    public List<Book> listBook();
+      List<Book> listByCondition(Book book);
 
-
-    public List<Book> listByCondition(Book book);
-
-
-
-    public Optional<Book> getBookById(Book book);
+      Optional<Book> getBookById(Book book);
 
 
 

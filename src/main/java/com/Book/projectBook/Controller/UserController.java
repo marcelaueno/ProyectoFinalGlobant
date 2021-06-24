@@ -33,13 +33,13 @@ public class UserController {
         return userService.createUser(user);
     }
 
-    @RequestMapping("/getUserById{userId}")
+    @RequestMapping("/getUserById/{userId}")
     public Optional<User> getUserById(@PathVariable("userId") User user) {
         return userService.getUserById(user);
 
     }
 
-    @DeleteMapping("/deleteUserById{userId}")
+    @DeleteMapping("/deleteUserById/{userId}")
     public String deleteUserById(@PathVariable("userId") Long idUser) {
         return userService.deleteUserById(idUser);
 

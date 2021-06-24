@@ -21,7 +21,7 @@ public class BookController {
 
 
 
-    @GetMapping ("/listBook")
+    @GetMapping("/listBook")
     public List<Book> listBook() {
         return bookService.listBook();
     }
@@ -38,7 +38,7 @@ public class BookController {
 
     }
 
-    @DeleteMapping("/getBookById/{bookId}")
+    @DeleteMapping("/deleteBookById/{bookId}")
     public String deleteBookById(@PathVariable("bookId") Long id) {
         return bookService.deleteById(id);
     }

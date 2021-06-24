@@ -6,16 +6,15 @@ import com.Book.projectBook.Model.Book;
 import com.Book.projectBook.Repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 public class BookService implements BookServiceInterface {
@@ -25,11 +24,24 @@ public class BookService implements BookServiceInterface {
     private BookRepository bookRepository;
 
 
-    @Override
-    public Book createBook(Book book) {
-          return bookRepository.save(book);
 
+
+
+    public Book findByTitle(String title) {
+        return bookRepository.findByTitle(title);
     }
+
+
+
+    @Override
+    public Book createBook(Book book)  {
+        Book existingBook = bookRepository.findByTitle(book.getTitle());
+        if(existingBook != null){
+            throw new ExceptionBookExists("This book already exists");
+        }
+       return bookRepository.save(book);
+    }
+
 
     @Override
     public Book updateBook(Book book) {

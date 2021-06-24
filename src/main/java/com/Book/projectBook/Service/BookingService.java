@@ -2,6 +2,7 @@ package com.Book.projectBook.Service;
 
 import com.Book.projectBook.Model.Book;
 import com.Book.projectBook.Model.Booking;
+import com.Book.projectBook.Model.User;
 import com.Book.projectBook.Repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +22,13 @@ public class BookingService implements BookingServiceInterface{
 
     @Override
     public Booking createBooking(Booking booking) {
-        return bookingRepository.save(booking);
+       return null;
     }
 
     @Override
-    public Booking updateBooking(Booking booking) {
-        return null;
+    public Booking updateBooking(Book book, User user, Booking booking) {
+        return  null;
+
     }
 
     @Override

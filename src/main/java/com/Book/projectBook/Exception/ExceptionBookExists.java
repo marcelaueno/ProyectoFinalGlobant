@@ -2,17 +2,13 @@ package com.Book.projectBook.Exception;
 
 
 
-public class ExceptionBookExists extends RuntimeException {
+public class ExceptionBookExists extends RuntimeException{
 
-    private static final long serialVersionUID = 1L;
+    public ExceptionBookExists (String message) { super(message); }
+    public ExceptionBookExists (String message, Throwable cause) { super(message, cause);}
 
-    public ExceptionBookExists(String msg) {
-        super(msg);
-    }
-
-    public ExceptionBookExists() {
-
-    }
 }
+
+
 
 

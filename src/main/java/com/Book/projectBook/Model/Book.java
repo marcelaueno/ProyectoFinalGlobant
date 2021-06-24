@@ -34,19 +34,21 @@ public class Book {
     @Column(name="reserved")
     @NotEmpty
     private String reserved;
+    @Column(name="infoBooking", length = 45)
+    @NotEmpty
+    private String infoBooking;
 
 
-
-    public Book() {
+       public Book() {
     }
 
-    public Book(Long id, String title, String author, @NonNull Date publishedDate, String reserved) {
+    public Book(Long id, String title, String author, @NonNull Date publishedDate, String reserved, String infoBooking) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.publishedDate = publishedDate;
         this.reserved = reserved;
-
+        this.infoBooking = infoBooking;
     }
 
     public Long getId() {
@@ -81,15 +83,19 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
-
     public String getReserved() {
         return reserved;
-
     }
+
     public void setReserved(String reserved) {
         this.reserved = reserved;
     }
 
+    public String getInfoBooking() {
+        return infoBooking;
+    }
 
-
+    public void setInfoBooking(String infoBooking) {
+        this.infoBooking = infoBooking;
+    }
 }
