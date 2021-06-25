@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -24,22 +25,27 @@ public class Booking {
     @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date endDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-     private User user;
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idUser", referencedColumnName = "idUser")
+    private User user;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idBook")
     private Book book;
+
+
+
 
 
     public Booking() {
     }
 
-    public Booking(Long idBooking, @NonNull Date startDate, @NonNull Date endDate, User user, Book book) {
+    public Booking(Long idBooking, @NonNull Date startDate, @NonNull Date endDater) {
         this.idBooking = idBooking;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.user = user;
-        this.book = book;
-    }
+
+         }
 
     public Date getStartDate() {
         return startDate;
@@ -65,5 +71,19 @@ public class Booking {
         this.endDate = endDate;
     }
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 }

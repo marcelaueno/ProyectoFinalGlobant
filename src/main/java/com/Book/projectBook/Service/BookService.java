@@ -24,9 +24,6 @@ public class BookService implements BookServiceInterface {
     private BookRepository bookRepository;
 
 
-
-
-
     public Book findByTitle(String title) {
         return bookRepository.findByTitle(title);
     }
@@ -34,12 +31,12 @@ public class BookService implements BookServiceInterface {
 
 
     @Override
-    public Book createBook(Book book)  {
+    public Book createBook(Book book) {
         Book existingBook = bookRepository.findByTitle(book.getTitle());
-        if(existingBook != null){
+        if (existingBook != null) {
             throw new ExceptionBookExists("This book already exists");
         }
-       return bookRepository.save(book);
+        return bookRepository.save(book);
     }
 
 
@@ -51,7 +48,7 @@ public class BookService implements BookServiceInterface {
         updateBook.setAuthor(book.getAuthor());
         updateBook.setPublishedDate(book.getPublishedDate());
 
-        return  bookRepository.save(updateBook);
+        return bookRepository.save(updateBook);
 
 
     }
@@ -59,23 +56,21 @@ public class BookService implements BookServiceInterface {
     @Override
     public String deleteById(Long id) {
         bookRepository.deleteById(id);
-        return "Book removed"+ id;
+        return "Book removed \n" + "IdBook:" + id;
     }
 
 
     @Override
     @Transactional(readOnly = true)
     public List<Book> listBook() {
-       return (List<Book>) bookRepository.findByOrderByTitleAsc();    }
+        return (List<Book>) bookRepository.findByOrderByTitleAsc();
+    }
 
 
-
-
+    @Override
     @Transactional(readOnly = true)
-    public List<Book> listByCondition(Book book) {
-       return null;
-
-
+    public List<Book> listByStatus() {
+        return null;
     }
 
 
@@ -84,4 +79,5 @@ public class BookService implements BookServiceInterface {
         return bookRepository.findById(book.getId());
     }
 }
+
 

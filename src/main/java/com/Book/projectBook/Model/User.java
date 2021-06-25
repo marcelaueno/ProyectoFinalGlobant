@@ -1,11 +1,12 @@
 package com.Book.projectBook.Model;
 
-import org.springframework.lang.NonNull;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import java.util.Set;
 
 
 @Entity
@@ -28,6 +29,10 @@ public class User {
     @Column(name="documentNumber",nullable = false)
     private int documentNumber;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idBooking")
+    private Booking booking;
+
     public User() {
     }
 
@@ -37,6 +42,7 @@ public class User {
         this.lastname = lastname;
         this.email = email;
         this.documentNumber = documentNumber;
+
     }
 
     public Long getIdUser() {
@@ -60,7 +66,7 @@ public class User {
     }
 
     public void setLastname(String lastname) {
-        this.lastname = (lastname != null) ? lastname.toUpperCase() : null;;
+        this.lastname = (lastname != null) ? lastname.toUpperCase() : null;
     }
 
     public String getEmail() {
@@ -68,7 +74,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email = (email != null) ? email.toUpperCase() : null;;
+        this.email = (email != null) ? email.toUpperCase() : null;
     }
 
     public int getDocumentNumber() {
@@ -79,4 +85,12 @@ public class User {
         this.documentNumber = documentNumber;
     }
 
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
 }
+

@@ -5,7 +5,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 
@@ -31,24 +30,31 @@ public class Book {
     @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date publishedDate;
 
-    @Column(name="reserved")
+    @Column(name="status", length = 45)
     @NotEmpty
-    private String reserved;
-    @Column(name="infoBooking", length = 45)
+    private String status;
+
+    @Column(name="details", length = 45)
     @NotEmpty
-    private String infoBooking;
+    private String details;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Booking booking;
+
 
 
        public Book() {
     }
 
-    public Book(Long id, String title, String author, @NonNull Date publishedDate, String reserved, String infoBooking) {
+    public Book(Long id, String title, String author, @NonNull Date publishedDate, String status, String details) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.publishedDate = publishedDate;
-        this.reserved = reserved;
-        this.infoBooking = infoBooking;
+        this.status = status;
+        this.details = details;
+
     }
 
     public Long getId() {
@@ -67,12 +73,10 @@ public class Book {
         this.title = (title != null) ? title.toUpperCase() : null;
     }
 
-    public String getAuthor() {
-        return author;
-    }
+    public String getAuthor() { return author; }
 
     public void setAuthor(String author) {
-        this.author =  this.author = (author != null) ? author.toUpperCase() : null;
+        this.author =  (author != null) ? author.toUpperCase() : null;
     }
 
     public Date getPublishedDate() {
@@ -83,19 +87,23 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
-    public String getReserved() {
-        return reserved;
+    public String getStatus() {  return status;   }
+
+    public void setStatus(String status) {
+        this.status = (status != null) ? status.toUpperCase() : null;
     }
 
-    public void setReserved(String reserved) {
-        this.reserved = reserved;
+    public String getDetails() { return details;   }
+
+    public void setDetails(String details) {
+        this.details = (details != null) ? details.toUpperCase() : null;
     }
 
-    public String getInfoBooking() {
-        return infoBooking;
+   public Booking getBooking() {
+        return booking;
     }
 
-    public void setInfoBooking(String infoBooking) {
-        this.infoBooking = infoBooking;
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }

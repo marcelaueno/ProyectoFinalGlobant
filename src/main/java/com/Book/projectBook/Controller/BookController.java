@@ -25,6 +25,9 @@ public class BookController {
     public List<Book> listBook() {
         return bookService.listBook();
     }
+/*
+    @GetMapping
+    public List<Book> listBookByStatus(){return bookService.listByStatus();}*/
 
     @PostMapping("/createBook")
     public ResponseEntity<Book> createBook(@RequestBody Book book) {

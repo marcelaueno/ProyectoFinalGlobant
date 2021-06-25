@@ -19,7 +19,7 @@ public interface BookServiceInterface {
 
       List<Book> listBook();
 
-      List<Book> listByCondition(Book book);
+      List<Book> listByStatus();
 
       Optional<Book> getBookById(Book book);
 
