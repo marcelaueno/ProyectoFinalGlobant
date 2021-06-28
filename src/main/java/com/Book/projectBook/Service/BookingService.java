@@ -38,12 +38,19 @@ public class BookingService implements BookingServiceInterface{
     }
 
 //    @Override
-//    public String updateBookingById(Long idBooking) {
-//        Optional<Booking> optionalBooking = bookingRepository.findById(idBooki
-//        Optional<User> optionalUser = userRepository.findById(booking.getUser().getId());
+//    public Booking updateBooking(Booking booking) {
+//        Optional<Booking> optionalBooking = bookingRepository.findById(booking.getIdBooking());
+//        Book updateBooking = optionalBooking.get();
+//        updateBooking.setStartDate(booking.getStartDate());
+//        updateBooking.setEndDate(booking.getEndDate());
+//        return bookRepository.save(updateBooking);
+//    }
+//
+//    @Override
+//    public Booking updateBooking(Booking booking) {
+////        Optional<Booking> optionalBooking = bookingRepository.findById(booking.getBook().getId());
+////        Optional<User> optionalUser = userRepository.findById(booking.getUser().getId());
 //        Booking updateBooking = optionalBooking.get();
-//        Book updateBook = optionalBook.get();
-//        User updateUser = optionalUser.get();
 //        updateBook.setId(booking.getBook().getId());
 //        updateUser.setId(booking.getUser().getId());
 //        updateBooking.setStartDate(booking.getStartDate());
