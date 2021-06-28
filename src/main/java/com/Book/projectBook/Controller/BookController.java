@@ -22,6 +22,11 @@ public class BookController {
     public List<Book> listBook() {
         return bookService.listBook();
     }
+
+    @GetMapping("/listAvailable")
+    public List<Book> listAvailable() {
+        return bookService.listAvailable();
+    }
 /*
     @GetMapping
     public List<Book> listBookByStatus(){return bookService.listByStatus();}*/

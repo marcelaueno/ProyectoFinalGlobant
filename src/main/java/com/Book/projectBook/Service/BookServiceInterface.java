@@ -23,6 +23,8 @@ public interface BookServiceInterface {
 
       Optional<Book> getBookById(Book book);
 
+      List<Book> listAvailable();
+
 
 
 }

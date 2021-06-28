@@ -29,9 +29,9 @@ public class Book {
     @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date publishedDate;
 
-    @Column(name="status", length = 45)
-    @NotEmpty
-    private String status;
+//    @Column(name="status", length = 45)
+//    @NotEmpty
+//    private String status;
 
 //    @Column(name="details", length = 45)
 //    @NotEmpty
@@ -43,16 +43,16 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, String title, String author, @NonNull Date publishedDate, String status, String details, Booking booking) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.publishedDate = publishedDate;
-        this.status = status;
-//        this.details = details;
-        this.booking = booking;
-
-    }
+//    public Book(Long id, String title, String author, @NonNull Date publishedDate, String status, String details, Booking booking) {
+//        this.id = id;
+//        this.title = title;
+//        this.author = author;
+//        this.publishedDate = publishedDate;
+////        this.status = status;
+////        this.details = details;
+//        this.booking = booking;
+//
+//    }
 
     public Long getId() {
         return id;
@@ -84,11 +84,16 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
-    public String getStatus() {  return status;   }
-
-    public void setStatus(String status) {
-        this.status = (status != null) ? status.toUpperCase() : null;
+    public String getStatus() {
+        if (booking == null) {
+            return "available";
+        } else {
+            return "reserved";
+        }
     }
+//    public void setStatus(String status) {
+//        this.status = (status != null) ? status.toUpperCase() : null;
+//    }
 
 //    public String getDetails() { return details;   }
 //

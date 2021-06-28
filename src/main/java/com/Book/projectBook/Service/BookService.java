@@ -58,6 +58,12 @@ public class BookService implements BookServiceInterface {
         return (List<Book>) bookRepository.findByOrderByTitleAsc();
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Book> listAvailable() {
+        return (List<Book>) bookRepository.findByBookingIsNull();
+    }
+
 
     @Override
     @Transactional(readOnly = true)
