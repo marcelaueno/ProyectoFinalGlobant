@@ -13,7 +13,7 @@ import java.util.Date;
 public class Book {
 
     @Id
-    @Column(name="idBook")
+//    @Column(name="idBook")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
@@ -25,7 +25,6 @@ public class Book {
     @NotEmpty
     private  String author;
 
-    @Column
     @NonNull
     @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date publishedDate;
@@ -52,9 +51,6 @@ public class Book {
         this.status = status;
 //        this.details = details;
         this.booking = booking;
-
-
-
 
     }
 
@@ -94,11 +90,11 @@ public class Book {
         this.status = (status != null) ? status.toUpperCase() : null;
     }
 
-    public String getDetails() { return details;   }
-
-    public void setDetails(String details) {
-        this.details = (details != null) ? details.toUpperCase() : null;
-    }
+//    public String getDetails() { return details;   }
+//
+//    public void setDetails(String details) {
+//        this.details = (details != null) ? details.toUpperCase() : null;
+//    }
 
    public Booking getBooking() {
         return booking;

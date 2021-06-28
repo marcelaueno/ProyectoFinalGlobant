@@ -2,6 +2,7 @@ package com.Book.projectBook.Model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 import javax.persistence.*;
@@ -14,25 +15,25 @@ import java.util.List;
 public class Booking {
 
     @Id
-    @Column(name="idBooking")
+//    @Column(name="idBooking")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private  Long idBooking;
-    @Column
+
     @NonNull
     @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date startDate;
-    @Column
+
     @NonNull
     @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date endDate;
 
     @OneToOne // no hace falta ni cascade ni fetch
-    @JoinColumn(name = "idUser")
+//    @JoinColumn(name = "idUser")
     private User user;
 
     @OneToOne
-    @JoinColumn(name = "idBook")
-    @JsonIgnore
+    @JoinColumn(name = "book_id")
+    @JsonProperty( value = "book", access = JsonProperty.Access.WRITE_ONLY)
     private Book book;
 
     public Booking() {
@@ -77,6 +78,7 @@ public class Booking {
     public void setUser(User user) {
         this.user = user;
     }
+
 
     public Book getBook() {
         return book;
