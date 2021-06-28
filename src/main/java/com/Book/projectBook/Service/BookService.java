@@ -64,14 +64,6 @@ public class BookService implements BookServiceInterface {
         return (List<Book>) bookRepository.findByBookingIsNull();
     }
 
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Book> listByStatus() {
-        return null;
-    }
-
-
     @Override
     public Optional<Book> getBookById(Book book) {
         return bookRepository.findById(book.getId());

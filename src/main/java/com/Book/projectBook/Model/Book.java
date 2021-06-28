@@ -13,7 +13,6 @@ import java.util.Date;
 public class Book {
 
     @Id
-//    @Column(name="idBook")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
@@ -28,14 +27,6 @@ public class Book {
     @NonNull
     @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date publishedDate;
-
-//    @Column(name="status", length = 45)
-//    @NotEmpty
-//    private String status;
-
-//    @Column(name="details", length = 45)
-//    @NotEmpty
-//    private String details;
 
     @OneToOne(mappedBy = "book") //propiedad dentro de booking
     private Booking booking;
@@ -91,15 +82,6 @@ public class Book {
             return "reserved";
         }
     }
-//    public void setStatus(String status) {
-//        this.status = (status != null) ? status.toUpperCase() : null;
-//    }
-
-//    public String getDetails() { return details;   }
-//
-//    public void setDetails(String details) {
-//        this.details = (details != null) ? details.toUpperCase() : null;
-//    }
 
    public Booking getBooking() {
         return booking;

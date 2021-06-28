@@ -34,28 +34,40 @@ public class BookingService implements BookingServiceInterface{
         User user = optionalUser.get();
         booking.setBook(book);
         booking.setUser(user);
-//        getBook.setStatus(book.getStatus());
         return bookingRepository.save(booking);
     }
 
+//    @Override
+//    public String updateBookingById(Long idBooking) {
+//        Optional<Booking> optionalBooking = bookingRepository.findById(idBooki
+//        Optional<User> optionalUser = userRepository.findById(booking.getUser().getId());
+//        Booking updateBooking = optionalBooking.get();
+//        Book updateBook = optionalBook.get();
+//        User updateUser = optionalUser.get();
+//        updateBook.setId(booking.getBook().getId());
+//        updateUser.setId(booking.getUser().getId());
+//        updateBooking.setStartDate(booking.getStartDate());
+//        updateBooking.setEndDate(booking.getEndDate());
+//        return bookingRepository.save(updateBooking);
+//    }
 
-    @Override
-    public Booking updateBooking(Book book, User user, Booking booking) {
-      /*Optional<Booking> optionalBooking = bookingRepository.findById(booking.getIdBooking());
-      Optional<Book> optionalBook = bookRepository.findById(book.getId());
-      Optional<User> optionalUser = userRepository.findById(user.getIdUser());
-        Book bookUpdate = new Book();
-        bookUpdate.setId(book.getId());
-        bookUpdate.setDetails(book.getDetails());
-        Booking updateBooking = optionalBooking.get();
-        updateBooking.setUser(booking.getUser());
-        updateBooking.setStartDate(booking.getStartDate());
-        updateBooking.setEndDate(booking.getEndDate());
-        updateBooking.setBook(book);
-            return  bookingRepository.save(book, user, booking);*/
-                return null;
-
-    }
+//    @Override
+//    public Booking updateBooking(Book book, User user, Booking booking) {
+//      /*Optional<Booking> optionalBooking = bookingRepository.findById(booking.getIdBooking());
+//      Optional<Book> optionalBook = bookRepository.findById(book.getId());
+//      Optional<User> optionalUser = userRepository.findById(user.getIdUser());
+//        Book bookUpdate = new Book();
+//        bookUpdate.setId(book.getId());
+//        bookUpdate.setDetails(book.getDetails());
+//        Booking updateBooking = optionalBooking.get();
+//        updateBooking.setUser(booking.getUser());
+//        updateBooking.setStartDate(booking.getStartDate());
+//        updateBooking.setEndDate(booking.getEndDate());
+//        updateBooking.setBook(book);
+//            return  bookingRepository.save(book, user, booking);*/
+//                return null;
+//
+//    }
 
     @Override
     public String deleteByIdBooking(Long idBooking) {

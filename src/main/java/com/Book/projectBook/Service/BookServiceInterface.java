@@ -19,8 +19,6 @@ public interface BookServiceInterface {
 
       List<Book> listBook();
 
-      List<Book> listByStatus();
-
       Optional<Book> getBookById(Book book);
 
       List<Book> listAvailable();

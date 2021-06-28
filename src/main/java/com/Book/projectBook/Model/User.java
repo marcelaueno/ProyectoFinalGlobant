@@ -85,13 +85,5 @@ public class User {
     public void setDocumentNumber(int documentNumber) {
         this.documentNumber = documentNumber;
     }
-
-//    public Booking getBooking() {
-//        return booking;
-//    }
-//
-//    public void setBooking(Booking booking) {
-//        this.booking = booking;
-//    }
 }
 

@@ -46,7 +46,6 @@ public class Booking {
          }
 
 
-
     public Long getIdBooking() {
         return idBooking;
     }
@@ -78,7 +77,6 @@ public class Booking {
     public void setUser(User user) {
         this.user = user;
     }
-
 
     public Book getBook() {
         return book;

@@ -27,9 +27,6 @@ public class BookController {
     public List<Book> listAvailable() {
         return bookService.listAvailable();
     }
-/*
-    @GetMapping
-    public List<Book> listBookByStatus(){return bookService.listByStatus();}*/
 
     @PostMapping("/createBook")
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
@@ -40,7 +37,6 @@ public class BookController {
     @RequestMapping("/getBookById/{bookId}")
     public Optional<Book> getBookById(@PathVariable("bookId") Book book) {
         return bookService.getBookById(book);
-
     }
 
     @DeleteMapping("/deleteBookById/{bookId}")
@@ -53,6 +49,4 @@ public class BookController {
         bookService.updateBook(book);
         return new ResponseEntity<Book>(HttpStatus.OK);
     }
-
-
 }
