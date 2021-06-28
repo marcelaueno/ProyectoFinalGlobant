@@ -31,21 +31,21 @@ public class BookingController {
         return new ResponseEntity<Booking>(HttpStatus.CREATED);
     }
 
-    @RequestMapping("/getBookingById/{bookId}")
+    @RequestMapping("/getBookingById/{bookingId}")
     public Optional<Booking> getBookingById(@PathVariable("bookingId") Booking booking) {
         return bookingService.getBookingById(booking);
 
     }
 
-    @DeleteMapping("/deleteBookingById/{bookId}")
+    @DeleteMapping("/deleteBookingById/{bookingId}")
     public String deleteBookingById(@PathVariable("bookingId") Long idBooking) {
         return bookingService.deleteByIdBooking(idBooking);
     }
 
-//    @PutMapping("/updateBooking/{bookId}")
-//    public Booking updateBooking(@RequestBody Booking booking) {
-//        return bookingService.updateBooking(booking);
-//    }
+    @PutMapping("/updateBooking/{bookingId}")
+    public Booking updateBooking(@RequestBody Booking booking) {
+        return bookingService.updateBooking(booking);
+    }
 
 
 }

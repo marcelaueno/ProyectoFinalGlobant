@@ -37,14 +37,14 @@ public class BookingService implements BookingServiceInterface{
         return bookingRepository.save(booking);
     }
 
-//    @Override
-//    public Booking updateBooking(Booking booking) {
-//        Optional<Booking> optionalBooking = bookingRepository.findById(booking.getIdBooking());
-//        Book updateBooking = optionalBooking.get();
-//        updateBooking.setStartDate(booking.getStartDate());
-//        updateBooking.setEndDate(booking.getEndDate());
-//        return bookRepository.save(updateBooking);
-//    }
+    @Override
+    public Booking updateBooking(Booking booking) {
+        Optional<Booking> optionalBooking = bookingRepository.findById(booking.getIdBooking());
+        Book updateBooking = optionalBooking.get();
+        updateBooking.setStartDate(booking.getStartDate());
+        updateBooking.setEndDate(booking.getEndDate());
+        return bookRepository.save(updateBooking);
+    }
 //
 //    @Override
 //    public Booking updateBooking(Booking booking) {
@@ -79,7 +79,7 @@ public class BookingService implements BookingServiceInterface{
     @Override
     public String deleteByIdBooking(Long idBooking) {
         bookingRepository.deleteById(idBooking);
-        return "User removed"+ idBooking;
+        return "Booking removed"+ idBooking;
 
     }
 

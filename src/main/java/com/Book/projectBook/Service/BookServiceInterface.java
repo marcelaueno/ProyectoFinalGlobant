@@ -23,6 +23,4 @@ public interface BookServiceInterface {
 
       List<Book> listAvailable();
 
-
-
 }
