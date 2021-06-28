@@ -8,6 +8,7 @@ import com.Book.projectBook.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class BookingController {
     }
 
     @PostMapping("/createBooking")
-    public Booking createBooking(@RequestBody Book book, User user, Booking booking) {
+    public Booking createBooking(@Valid @RequestBody Book book, User user, Booking booking) {
         return bookingService.createBooking(book, user, booking);
     }
 
@@ -40,7 +41,7 @@ public class BookingController {
     }
 
     @PutMapping("/updateBooking")
-    public Booking updateBooking(@RequestBody Book book, User user, Booking booking) {
+    public Booking updateBooking(@Valid @RequestBody Book book, User user, Booking booking) {
         return bookingService.updateBooking(book, user, booking);
     }
 

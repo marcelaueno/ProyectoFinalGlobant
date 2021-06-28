@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 
@@ -18,24 +19,24 @@ public class Book {
     private Long id;
 
     @Column(name="title", length = 45)
-    @NotEmpty
+    @NotEmpty(message = "Title is mandatory")
     private  String title;
 
     @Column(name="author", length = 45)
-    @NotEmpty
+    @NotEmpty(message = "Author is mandatory")
     private  String author;
 
     @Column
-    @NonNull
-    @DateTimeFormat(pattern="MM/dd/yyyy")
+    @NotNull(message = "Date is mandatory")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern="dd/MM/yyyy")
     private Date publishedDate;
 
     @Column(name="status", length = 45)
-    @NotEmpty
+    @NotEmpty(message = "Status is mandatory")
     private String status;
 
     @Column(name="details", length = 45)
-    @NotEmpty
+    @NotEmpty(message = "Details are mandatory")
     private String details;
 
 

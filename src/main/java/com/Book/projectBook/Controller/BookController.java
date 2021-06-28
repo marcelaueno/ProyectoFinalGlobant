@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,9 +31,9 @@ public class BookController {
     public List<Book> listBookByStatus(){return bookService.listByStatus();}*/
 
     @PostMapping("/createBook")
-    public ResponseEntity<Book> createBook(@RequestBody Book book) {
-        bookService.createBook(book);
-        return  new ResponseEntity<Book>(HttpStatus.CREATED);
+    public ResponseEntity<Book> createBook(@Valid @RequestBody Book book) {
+           bookService.createBook(book);
+           return  new ResponseEntity<Book>(HttpStatus.CREATED);
     }
 
     @RequestMapping("/getBookById/{bookId}")

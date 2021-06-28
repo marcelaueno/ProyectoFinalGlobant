@@ -27,17 +27,16 @@ public class BookingService implements BookingServiceInterface{
 
     @Override
   public Booking createBooking(Book book, User user, Booking booking) {
-       /* Optional<Book> optionalBook = bookRepository.findById(book.getId());
+        Optional<Book> optionalBook = bookRepository.findById(book.getId());
         Optional<User> optionalUser = userRepository.findById(user.getIdUser());
         Book getBook = optionalBook.get();
         User getUser = optionalUser.get();
-        Booking newBooking = new Booking();
         getUser.setIdUser(user.getIdUser());
         getBook.setId(book.getId());
-        newBooking.setStartDate(booking.getStartDate());
-        newBooking.setEndDate(booking.getEndDate());
-        return bookingRepository.save(booking);*/
-        return null;
+        getBook.setStatus(book.getStatus());
+
+        return bookingRepository.save(booking);
+
 
     }
 

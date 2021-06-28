@@ -1,6 +1,7 @@
 package com.Book.projectBook.Exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +11,12 @@ public class ExceptionResponse {
     private String errorCode;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private LocalDateTime timestamp;
+    private HttpStatus status;
+
+    public ExceptionResponse() {
+    }
+
+
 
     public String getErrorMessage() {
         return errorMessage;
@@ -33,5 +40,13 @@ public class ExceptionResponse {
 
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public HttpStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(HttpStatus status) {
+        this.status = status;
     }
 }

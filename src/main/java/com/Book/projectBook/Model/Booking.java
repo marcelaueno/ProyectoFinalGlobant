@@ -4,8 +4,9 @@ package com.Book.projectBook.Model;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
+
 
 
 @Entity
@@ -17,12 +18,12 @@ public class Booking {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private  Long idBooking;
     @Column
-    @NonNull
-    @DateTimeFormat(pattern="MM/dd/yyyy")
+    @NotNull(message = "Date is mandatory")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern="dd/MM/yyyy")
     private Date startDate;
     @Column
-    @NonNull
-    @DateTimeFormat(pattern="MM/dd/yyyy")
+    @NotNull(message = "Date is mandatory")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern="dd/MM/yyyy")
     private Date endDate;
 
     @OneToOne(cascade = CascadeType.ALL)

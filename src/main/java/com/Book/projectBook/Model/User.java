@@ -3,10 +3,13 @@ package com.Book.projectBook.Model;
 
 
 import javax.persistence.*;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
-import java.util.Set;
+
 
 
 @Entity
@@ -18,25 +21,31 @@ public class User {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long idUser;
     @Column(name="name", length = 45)
-    @NotEmpty
+    @NotEmpty(message = "Name is mandatory")
     private String name;
     @Column(name="lastname", length = 45)
-    @NotEmpty
+    @NotEmpty(message = "Lastname is mandatory")
     private String lastname;
     @Column(name="email", length = 50,unique = true)
-    @NotEmpty @Email
+    @NotEmpty(message = "Email is mandatory") @Pattern(regexp =  "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", message = "Invalid email format")
     private String email;
     @Column(name="documentNumber",nullable = false)
+    @NotNull(message = "Document Number is mandatory")
     private int documentNumber;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idBooking")
     private Booking booking;
 
+
+
+
+
     public User() {
     }
 
     public User(Long idUser, String name, String lastname, String email, int documentNumber) {
+
         this.idUser = idUser;
         this.name = name;
         this.lastname = lastname;
@@ -70,11 +79,12 @@ public class User {
     }
 
     public String getEmail() {
+
         return email;
     }
 
     public void setEmail(String email) {
-        this.email = (email != null) ? email.toUpperCase() : null;
+          this.email = (email != null) ? email.toUpperCase() : null;
     }
 
     public int getDocumentNumber() {
@@ -92,5 +102,7 @@ public class User {
     public void setBooking(Booking booking) {
         this.booking = booking;
     }
+
+
 }
 
