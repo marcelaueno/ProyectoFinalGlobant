@@ -3,6 +3,7 @@ package com.Book.projectBook.Service;
 import com.Book.projectBook.Exception.ExceptionBookExists;
 import com.Book.projectBook.Model.Book;
 
+import com.Book.projectBook.Model.Booking;
 import com.Book.projectBook.Repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,14 +45,14 @@ public class BookService implements BookServiceInterface {
         updateBook.setTitle(book.getTitle());
         updateBook.setAuthor(book.getAuthor());
         updateBook.setPublishedDate(book.getPublishedDate());
-        return bookRepository.save(updateBook);
+        return bookRepository.save(book);
     }
 
-    @Override
-    public String deleteById(Long id) {
-        bookRepository.deleteById(id);
-        return "Book removed \n" + "IdBook:" + id;
-    }
+//    @Override
+//    public String deleteById(Long id) {
+//        bookRepository.deleteById(id);
+//        return "Book removed \n" + "IdBook:" + id;
+//    }
 
     @Override
     @Transactional(readOnly = true)
@@ -68,6 +70,8 @@ public class BookService implements BookServiceInterface {
     public Optional<Book> getBookById(Book book) {
         return bookRepository.findById(book.getId());
     }
+
+
 }
 
 

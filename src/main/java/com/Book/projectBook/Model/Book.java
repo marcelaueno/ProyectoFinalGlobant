@@ -34,16 +34,14 @@ public class Book {
     public Book() {
     }
 
-//    public Book(Long id, String title, String author, @NonNull Date publishedDate, String status, String details, Booking booking) {
-//        this.id = id;
-//        this.title = title;
-//        this.author = author;
-//        this.publishedDate = publishedDate;
-////        this.status = status;
-////        this.details = details;
-//        this.booking = booking;
-//
-//    }
+    public Book(Long id, String title, String author, @NonNull Date publishedDate, Booking booking) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.publishedDate = publishedDate;
+        this.booking = booking;
+
+    }
 
     public Long getId() {
         return id;

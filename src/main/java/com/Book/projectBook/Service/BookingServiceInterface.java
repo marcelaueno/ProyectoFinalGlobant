@@ -12,15 +12,12 @@ public interface BookingServiceInterface {
 
      Booking createBooking(Booking booking);
 
-//     Booking updateBooking(Booking booking);
-
-//     String updateBookingById(Long idBooking);
+     Booking updateBooking(Booking booking);
 
      String deleteByIdBooking(Long idBooking);
 
-     List<Booking> listBooking();
-
-     Optional<Booking> getBookingById(Booking booking);
-
+//     List<Booking> listBooking();
+//
+//     Optional<Booking> getBookingById(Booking booking);
 
 }

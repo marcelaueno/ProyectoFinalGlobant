@@ -20,10 +20,10 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    @GetMapping("/listBooking")
-    public List<Booking> listBooking() {
-        return bookingService.listBooking();
-    }
+//    @GetMapping("/listBooking")
+//    public List<Booking> listBooking() {
+//        return bookingService.listBooking();
+//    }
 
     @PostMapping("/createBooking")
     public ResponseEntity<Booking>  createBooking(@RequestBody Booking booking) {
@@ -31,11 +31,11 @@ public class BookingController {
         return new ResponseEntity<Booking>(HttpStatus.CREATED);
     }
 
-    @RequestMapping("/getBookingById/{bookingId}")
-    public Optional<Booking> getBookingById(@PathVariable("bookingId") Booking booking) {
-        return bookingService.getBookingById(booking);
-
-    }
+//    @RequestMapping("/getBookingById/{bookingId}")
+//    public Optional<Booking> getBookingById(@PathVariable("bookingId") Booking booking) {
+//        return bookingService.getBookingById(booking);
+//
+//    }
 
     @DeleteMapping("/deleteBookingById/{bookingId}")
     public String deleteBookingById(@PathVariable("bookingId") Long idBooking) {
@@ -46,6 +46,5 @@ public class BookingController {
     public Booking updateBooking(@RequestBody Booking booking) {
         return bookingService.updateBooking(booking);
     }
-
 
 }

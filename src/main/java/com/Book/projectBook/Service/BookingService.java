@@ -40,57 +40,27 @@ public class BookingService implements BookingServiceInterface{
     @Override
     public Booking updateBooking(Booking booking) {
         Optional<Booking> optionalBooking = bookingRepository.findById(booking.getIdBooking());
-        Book updateBooking = optionalBooking.get();
+        Booking updateBooking = optionalBooking.get();
         updateBooking.setStartDate(booking.getStartDate());
         updateBooking.setEndDate(booking.getEndDate());
-        return bookRepository.save(updateBooking);
+        return bookingRepository.save(booking);
     }
-//
-//    @Override
-//    public Booking updateBooking(Booking booking) {
-////        Optional<Booking> optionalBooking = bookingRepository.findById(booking.getBook().getId());
-////        Optional<User> optionalUser = userRepository.findById(booking.getUser().getId());
-//        Booking updateBooking = optionalBooking.get();
-//        updateBook.setId(booking.getBook().getId());
-//        updateUser.setId(booking.getUser().getId());
-//        updateBooking.setStartDate(booking.getStartDate());
-//        updateBooking.setEndDate(booking.getEndDate());
-//        return bookingRepository.save(updateBooking);
-//    }
-
-//    @Override
-//    public Booking updateBooking(Book book, User user, Booking booking) {
-//      /*Optional<Booking> optionalBooking = bookingRepository.findById(booking.getIdBooking());
-//      Optional<Book> optionalBook = bookRepository.findById(book.getId());
-//      Optional<User> optionalUser = userRepository.findById(user.getIdUser());
-//        Book bookUpdate = new Book();
-//        bookUpdate.setId(book.getId());
-//        bookUpdate.setDetails(book.getDetails());
-//        Booking updateBooking = optionalBooking.get();
-//        updateBooking.setUser(booking.getUser());
-//        updateBooking.setStartDate(booking.getStartDate());
-//        updateBooking.setEndDate(booking.getEndDate());
-//        updateBooking.setBook(book);
-//            return  bookingRepository.save(book, user, booking);*/
-//                return null;
-//
-//    }
 
     @Override
     public String deleteByIdBooking(Long idBooking) {
         bookingRepository.deleteById(idBooking);
         return "Booking removed"+ idBooking;
-
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<Booking> listBooking() {
-       return (List<Booking>)bookingRepository.findAll();
-    }
+//    @Override
+//    @Transactional(readOnly = true)
+//    public List<Booking> listBooking() {
+//       return (List<Booking>)bookingRepository.findAll();
+//    }
+//
+//    @Override
+//    public Optional<Booking> getBookingById(Booking booking) {
+//        return bookingRepository.findById(booking.getIdBooking());
+//    }
 
-    @Override
-    public Optional<Booking> getBookingById(Booking booking) {
-        return bookingRepository.findById(booking.getIdBooking());
-    }
 }

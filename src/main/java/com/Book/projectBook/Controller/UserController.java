@@ -18,10 +18,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/listUser")
-    public List<User> listUser() {
-        return userService.listUser();
-    }
+//    @GetMapping("/listUser")
+//    public List<User> listUser() {
+//        return userService.listUser();
+//    }
 
     @PostMapping("/createUser")
     public ResponseEntity<User>  createUser(@RequestBody User user) {
@@ -29,15 +29,15 @@ public class UserController {
         return new ResponseEntity<User>(HttpStatus.CREATED);
     }
 
-    @RequestMapping("/getUserById/{userId}")
-    public Optional<User> getUserById(@PathVariable("userId") User user) {
-        return userService.getUserById(user);
-    }
+//    @RequestMapping("/getUserById/{userId}")
+//    public Optional<User> getUserById(@PathVariable("userId") User user) {
+//        return userService.getUserById(user);
+//    }
 
-    @DeleteMapping("/deleteUserById/{userId}")
-    public String deleteUserById(@PathVariable("userId") Long idUser) {
-        return userService.deleteUserById(idUser);
-    }
+//    @DeleteMapping("/deleteUserById/{userId}")
+//    public String deleteUserById(@PathVariable("userId") Long idUser) {
+//        return userService.deleteUserById(idUser);
+//    }
 
     @PutMapping("/updateUser")
     public User updateUser(@RequestBody User user) {

@@ -28,23 +28,22 @@ public class UserService implements UserServiceInterface{
         updateUser.setLastname(user.getLastname());
         updateUser.setEmail(user.getEmail());
         updateUser.setDocumentNumber(user.getDocumentNumber());
-
         return  userRepository.save(updateUser);    }
 
-    @Override
-    public String deleteUserById(Long idUser) {
-        userRepository.deleteById(idUser);
-        return "User removed"+ idUser;
-    }
+//    @Override
+//    public String deleteUserById(Long idUser) {
+//        userRepository.deleteById(idUser);
+//        return "User removed"+ idUser;
+//    }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<User> listUser() {
-        return (List<User>) userRepository.findAll();
-    }
-
-    @Override
-    public Optional<User> getUserById(User user) {
-        return userRepository.findById(user.getId());
-    }
+//    @Override
+//    @Transactional(readOnly = true)
+//    public List<User> listUser() {
+//        return (List<User>) userRepository.findAll();
+//    }
+//
+//    @Override
+//    public Optional<User> getUserById(User user) {
+//        return userRepository.findById(user.getId());
+//    }
 }

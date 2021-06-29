@@ -10,17 +10,15 @@ import java.util.Optional;
 
 public interface BookServiceInterface {
 
-
      Book createBook(Book book) throws ExceptionBookExists;
 
      Book updateBook(Book book);
 
-     String deleteById(Long id);
+//     String deleteById(Long id);
 
       List<Book> listBook();
 
       Optional<Book> getBookById(Book book);
 
       List<Book> listAvailable();
-
 }

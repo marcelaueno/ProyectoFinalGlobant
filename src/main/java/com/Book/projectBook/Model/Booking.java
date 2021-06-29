@@ -45,7 +45,6 @@ public class Booking {
         this.endDate = endDate;
     }
 
-
     public Long getIdBooking() {
         return idBooking;
     }
