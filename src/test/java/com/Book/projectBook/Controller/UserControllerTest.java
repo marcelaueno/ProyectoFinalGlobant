@@ -18,6 +18,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -43,7 +44,7 @@ class UserControllerTest {
         mvc.perform(post("/createUser"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonBody)
-                .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON)
                 .andExpect(status().isCreated());
     }
 
@@ -52,14 +53,14 @@ class UserControllerTest {
 
         User userTest = new User(1l,"Federico","Ueno","federico@gmail.com",21212121);
 
-        given(userRepository.findById(userTest.getId())).willReturn(Optional.of(userTest);
+        given(userRepository.findById(userTest.getId())).willReturn(Optional.of(userTest));
 
         String jsonBody = "{\"id\": 1,\"name\": \"Federico\", \"lastname\": \"Ueno\", \"email\": \"federico@gmail.com\", \"documentNumber\": \"21212121\"}";
 
         mvc.perform(post("/updateUser"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonBody)
-                .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON)
                 .andExpect(content().json("{\"id\": 1,\"name\": \"Federico\", \"lastname\": \"Ueno\", \"email\": \"federico@gmail.com\", \"documentNumber\": \"21212121\"}"))
                 .andExpect(status().isOk());
 

@@ -3,6 +3,7 @@ package com.Book.projectBook.Service;
 import com.Book.projectBook.Model.User;
 import com.Book.projectBook.Repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -53,6 +54,7 @@ class UserServiceTest {
     }
 
     @Test
+    @Disabled
     void canUpdateUser() {
         //given
 
