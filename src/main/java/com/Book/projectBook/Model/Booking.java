@@ -1,6 +1,7 @@
 package com.Book.projectBook.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -24,6 +25,7 @@ public class Booking {
     private Date startDate;
 
     @NonNull
+//    @JsonFormat(pattern="dd-MM-yyyy")
     @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date endDate;
 

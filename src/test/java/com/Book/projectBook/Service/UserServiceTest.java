@@ -1,6 +1,7 @@
 package com.Book.projectBook.Service;
 
 import com.Book.projectBook.Model.User;
+import com.Book.projectBook.Repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,14 +18,14 @@ import static org.mockito.Mockito.verify;
 class UserServiceTest {
 
     @Mock
-    private UserServiceInterface userServiceInterface;
+    private UserRepository userRepository;
     //    private AutoCloseable autoCloseable;
     private UserService underTest;
 
     @BeforeEach
     void setUp() {
 //        autoCloseable = MockitoAnnotations.openMocks(this);
-        underTest = new UserService(userServiceInterface);
+        underTest = new UserService(userRepository);
     }
 
     @Test
@@ -44,7 +45,7 @@ class UserServiceTest {
         //then
         ArgumentCaptor<User> userArgumentCaptor =
                 ArgumentCaptor.forClass(User.class);
-        verify(userServiceInterface).save(userArgumentCaptor.capture());
+        verify(userRepository).save(userArgumentCaptor.capture());
 
         User captureUser = userArgumentCaptor.getValue();
 

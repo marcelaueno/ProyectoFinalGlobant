@@ -9,7 +9,6 @@ import java.util.Optional;
 
 public interface BookingServiceInterface {
 
-
      Booking createBooking(Booking booking);
 
      Booking updateBooking(Booking booking);
